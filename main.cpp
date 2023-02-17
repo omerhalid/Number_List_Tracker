@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,6 +23,7 @@ string display_menu() {
   cout << "To calculate the average of the entered numbers press 'M'" << endl;
   cout << "To find the smallest number in the list press 'S'" << endl;
   cout << "To find the largest number in the list press 'L'" << endl;
+  cout << "To search for a specific number in the list press 'F'" << endl;
   cout << "To quit press 'Q'" << endl;
 
   string selection;
@@ -97,6 +97,24 @@ void quit(bool &is_started) {
   is_started = false;
 }
 
+void find_number(vector<int>& list) {
+  int required_number;
+  cout << "What number you want to look for?: ";
+  cin >> required_number;
+
+  for (auto num : list) {
+    if (num == required_number) {
+      cout << "Found! " << required_number << " is in the list." << endl;
+    }
+    else if (list.size() < 1) {
+      cout << "List is empty." << endl;
+    }
+    else {
+      cout << required_number << " is not in the list" << endl;
+    }
+  }
+}
+
 
 int main() {
 
@@ -134,6 +152,9 @@ int main() {
     else if (choice_for_main == "l" || choice_for_main == "L") {
       largest_nubmer(choice_for_main, list);
     }
+    else if (choice_for_main == "f" || choice_for_main == "F") {
+      find_number(list);
+    }
     else if (choice_for_main == "q" || choice_for_main == "Q") {
       quit(is_started);
     }
@@ -142,4 +163,3 @@ int main() {
 
 
 }
-
